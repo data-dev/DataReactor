@@ -1,0 +1,17 @@
+datareactor package
+===================
+
+Submodules
+----------
+
+.. toctree::
+
+   datareactor.datareactor
+
+Module contents
+---------------
+
+.. automodule:: datareactor
+   :members:
+   :undoc-members:
+   :show-inheritance:

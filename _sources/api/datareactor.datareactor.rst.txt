@@ -1,0 +1,7 @@
+datareactor.datareactor module
+==============================
+
+.. automodule:: datareactor.datareactor
+   :members:
+   :undoc-members:
+   :show-inheritance:
