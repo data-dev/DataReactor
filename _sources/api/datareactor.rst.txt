@@ -1,6 +1,14 @@
 datareactor package
 ===================
 
+Subpackages
+-----------
+
+.. toctree::
+
+   datareactor.atoms
+   datareactor.sieve
+
 Submodules
 ----------
 

@@ -1,0 +1,10 @@
+datareactor.atoms package
+=========================
+
+Module contents
+---------------
+
+.. automodule:: datareactor.atoms
+   :members:
+   :undoc-members:
+   :show-inheritance:
