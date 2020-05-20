@@ -1,10 +1,4 @@
-
-<p align="center">
-  <img width=640 style="max-width:100%" src="docs/images/header.png">
-</p>
-
-
-<p align="center">
+<p>
     <a href="https://github.com/data-dev/DataReactor/actions" alt="Github Actions">
         <img src="https://img.shields.io/github/workflow/status/data-dev/DataReactor/Run%20Tests" /></a>
     <a href="https://codecov.io/gh/data-dev/DataReactor" alt="Code Coverage">
@@ -14,18 +8,13 @@
 </p>
 
 
-# DataReactor
-
+# Overview
 Augmenting relational datasets by generating derived columns with known lineage.
 
 - Documentation: https://data-dev.github.io/DataReactor
 - Homepage: https://github.com/data-dev/DataReactor
 
-# Overview
-
-TODO: Provide a short overview of the project here.
-
-# Install
+# Installation
 
 ## Requirements
 
@@ -82,16 +71,3 @@ for development.
 
 Please head to the [Contributing Guide](https://data-dev.github.io/DataReactor/contributing.html#get-started)
 for more details about this process.
-
-# Quickstart
-
-In this short tutorial we will guide you through a series of steps that will help you
-getting started with **DataReactor**.
-
-TODO: Create a step by step guide here.
-
-# What's next?
-
-For more details about **DataReactor** and all its possibilities
-and features, please check the [documentation site](
-https://data-dev.github.io/DataReactor/).
