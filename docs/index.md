@@ -1,20 +1,11 @@
-<p>
-    <a href="https://github.com/data-dev/DataReactor/actions" alt="Github Actions">
-        <img src="https://img.shields.io/github/workflow/status/data-dev/DataReactor/Run%20Tests" /></a>
-    <a href="https://codecov.io/gh/data-dev/DataReactor" alt="Code Coverage">
-        <img src="https://codecov.io/gh/data-dev/DataReactor/branch/master/graph/badge.svg" /></a>
-    <a href="https://github.com/data-dev/DataReactor/pulse" alt="Commit Activity">
-        <img src="https://img.shields.io/github/commit-activity/m/data-dev/DataReactor" /></a>
-</p>
+# DataReactor
 
-
-# Overview
 Augmenting relational datasets by generating derived columns with known lineage.
 
 - Documentation: https://data-dev.github.io/DataReactor
 - Homepage: https://github.com/data-dev/DataReactor
 
-# Installation
+# Install
 
 ## Requirements
 
@@ -71,3 +62,46 @@ for development.
 
 Please head to the [Contributing Guide](https://data-dev.github.io/DataReactor/contributing.html#get-started)
 for more details about this process.
+
+# Quickstart
+
+In this short tutorial we will guide you through a series of steps that will help you
+getting started with **DataReactor**.
+
+## Prepare a dataset
+A few example datasets can be found in the `datasets` directory. To prepare your
+own datasets, you can use the [metad](https://github.com/data-dev/MetaData) 
+library. Datasets are expected to follow the `metad` format which consists of a 
+directory with the following structure:
+
+```
+/<dataset_name>
+    <table_name>.csv
+    <table_name>.csv
+    <table_name>.csv
+    metadata.json
+```
+
+## Transform the dataset
+To create an expanded copy of the `university` dataset, run the following:
+
+```python
+from datareactor import DataReactor
+
+reactor = DataReactor()
+reactor.transform(
+    source="datasets/university",
+    destination="/tmp/university"
+)
+```
+
+This will read the dataset from the `source` directory and generate an expanded
+dataset in the `destination` directory which will contain additional columns 
+and will have an updated `metadata.json` file which contains information about
+those new columns and their lineage.
+
+# What's next?
+
+For more details about **DataReactor** and all its possibilities
+and features, please check the [documentation site](
+https://data-dev.github.io/DataReactor/).

@@ -21,10 +21,6 @@ Augmenting relational datasets by generating derived columns with known lineage.
 - Documentation: https://data-dev.github.io/DataReactor
 - Homepage: https://github.com/data-dev/DataReactor
 
-# Overview
-
-TODO: Provide a short overview of the project here.
-
 # Install
 
 ## Requirements
@@ -88,7 +84,37 @@ for more details about this process.
 In this short tutorial we will guide you through a series of steps that will help you
 getting started with **DataReactor**.
 
-TODO: Create a step by step guide here.
+## Prepare a dataset
+A few example datasets can be found in the `datasets` directory. To prepare your
+own datasets, you can use the [metad](https://github.com/data-dev/MetaData) 
+library. Datasets are expected to follow the `metad` format which consists of a 
+directory with the following structure:
+
+```
+/<dataset_name>
+    <table_name>.csv
+    <table_name>.csv
+    <table_name>.csv
+    metadata.json
+```
+
+## Transform the dataset
+To create an expanded copy of the `university` dataset, run the following:
+
+```python
+from datareactor import DataReactor
+
+reactor = DataReactor()
+reactor.transform(
+    source="datasets/university",
+    destination="/tmp/university"
+)
+```
+
+This will read the dataset from the `source` directory and generate an expanded
+dataset in the `destination` directory which will contain additional columns 
+and will have an updated `metadata.json` file which contains information about
+those new columns and their lineage.
 
 # What's next?
 

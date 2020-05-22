@@ -1,0 +1,129 @@
+{
+  "tables": [
+    {
+      "name": "atom",
+      "primary_key": "atom_id",
+      "fields": [
+        {
+          "name": "atom_id",
+          "data_type": "text"
+        },
+        {
+          "name": "molecule_id",
+          "data_type": "text"
+        },
+        {
+          "name": "type",
+          "data_type": "text"
+        }
+      ]
+    },
+    {
+      "name": "bond",
+      "primary_key": [
+        "atom_id",
+        "atom_id2"
+      ],
+      "fields": [
+        {
+          "name": "atom_id",
+          "data_type": "text"
+        },
+        {
+          "name": "atom_id2",
+          "data_type": "text"
+        },
+        {
+          "name": "type",
+          "data_type": "text"
+        }
+      ]
+    },
+    {
+      "name": "gmember",
+      "primary_key": [
+        "atom_id",
+        "group_id"
+      ],
+      "fields": [
+        {
+          "name": "atom_id",
+          "data_type": "text"
+        },
+        {
+          "name": "group_id",
+          "data_type": "text"
+        }
+      ]
+    },
+    {
+      "name": "group",
+      "primary_key": "group_id",
+      "fields": [
+        {
+          "name": "group_id",
+          "data_type": "text"
+        },
+        {
+          "name": "type",
+          "data_type": "text"
+        }
+      ]
+    },
+    {
+      "name": "molecule",
+      "primary_key": "molecule_id",
+      "fields": [
+        {
+          "name": "molecule_id",
+          "data_type": "text"
+        },
+        {
+          "name": "activity",
+          "data_type": "numerical"
+        },
+        {
+          "name": "logp",
+          "data_type": "numerical"
+        },
+        {
+          "name": "mweight",
+          "data_type": "numerical"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [
+    {
+      "table": "atom",
+      "field": "molecule_id",
+      "ref_table": "molecule",
+      "ref_field": "molecule_id"
+    },
+    {
+      "table": "bond",
+      "field": "atom_id",
+      "ref_table": "atom",
+      "ref_field": "atom_id"
+    },
+    {
+      "table": "bond",
+      "field": "atom_id2",
+      "ref_table": "atom",
+      "ref_field": "atom_id"
+    },
+    {
+      "table": "gmember",
+      "field": "atom_id",
+      "ref_table": "atom",
+      "ref_field": "atom_id"
+    },
+    {
+      "table": "gmember",
+      "field": "group_id",
+      "ref_table": "group",
+      "ref_field": "group_id"
+    }
+  ],
+  "constraints": []
+}
