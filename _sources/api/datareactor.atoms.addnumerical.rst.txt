@@ -1,0 +1,7 @@
+datareactor.atoms.addnumerical module
+=====================================
+
+.. automodule:: datareactor.atoms.addnumerical
+   :members:
+   :undoc-members:
+   :show-inheritance:

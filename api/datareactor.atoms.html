@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="datareactor.sieve package" href="datareactor.sieve.html" />
+    <link rel="next" title="datareactor.atoms.addnumerical module" href="datareactor.atoms.addnumerical.html" />
     <link rel="prev" title="datareactor package" href="datareactor.html" /> 
 </head>
 
@@ -83,19 +83,26 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html#installation">Installation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">DataReactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#install">Install</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html#install-from-source">Install from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html#install-for-development">Install for Development</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#quickstart">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#prepare-a-dataset">Prepare a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#transform-the-dataset">Transform the dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#what-s-next">What’s next?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="datareactor.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="datareactor.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">datareactor.atoms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-datareactor.atoms">Module contents</a></li>
 </ul>
 </li>
@@ -106,7 +113,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datareactor.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="datareactor.datareactor.html">datareactor.datareactor module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.dataset.html">datareactor.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.reactor.html">datareactor.reactor module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datareactor.html#module-datareactor">Module contents</a></li>
@@ -207,8 +215,231 @@
             
   <div class="section" id="datareactor-atoms-package">
 <h1>datareactor.atoms package<a class="headerlink" href="#datareactor-atoms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datareactor.atoms.addnumerical.html">datareactor.atoms.addnumerical module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datareactor.atoms.base.html">datareactor.atoms.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datareactor.atoms.featuretools.html">datareactor.atoms.featuretools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datareactor.atoms.randomnoise.html">datareactor.atoms.randomnoise module</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="module-datareactor.atoms">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datareactor.atoms" title="Permalink to this headline">¶</a></h2>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.Atom" title="datareactor.atoms.Atom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Atom</span></code></a></p></td>
+<td><p>Generate derived columns for a dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#datareactor.atoms.RandomNoiseAtom" title="datareactor.atoms.RandomNoiseAtom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RandomNoiseAtom</span></code></a></p></td>
+<td><p>Generate a new column with random noise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.FeatureToolsAtom" title="datareactor.atoms.FeatureToolsAtom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatureToolsAtom</span></code></a></p></td>
+<td><p>The <cite>FeatureToolsAtom</cite> generates derived columns based on the features generated by the <cite>featuretools</cite> library.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#datareactor.atoms.AddNumericalAtom" title="datareactor.atoms.AddNumericalAtom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddNumericalAtom</span></code></a></p></td>
+<td><p>The <cite>AddNumericalAtom</cite> generates a derived column which contains the sum of all numerical columns in the same table.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="datareactor.atoms.Atom">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.atoms.</code><code class="sig-name descname">Atom</code><a class="reference internal" href="../_modules/datareactor/atoms/base.html#Atom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.Atom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generate derived columns for a dataset.</p>
+<p>Each <cite>Atom</cite> is responsible for generating one or more derived columns for
+the target table.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.Atom.derive" title="datareactor.atoms.Atom.derive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive</span></code></a>(dataset, table_name)</p></td>
+<td><p>Generate derived columns for the specified table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#datareactor.atoms.Atom.transform" title="datareactor.atoms.Atom.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(dataset)</p></td>
+<td><p>Generate derived columns for the dataset.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datareactor.atoms.Atom.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">table_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/base.html#Atom.derive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.Atom.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate derived columns for the specified table.</p>
+<p>The <cite>derive</cite> function takes in a dataset and the name of the target
+column. It returns a list of derived columns which can be concatenated
+to the target table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p></li>
+<li><p><strong>table_name</strong> (<em>str</em>) – The name of the target table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="datareactor.atoms.Atom.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/base.html#Atom.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.Atom.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate derived columns for the dataset.</p>
+<p>The <cite>transform</cite> function takes in a dataset and returns a sequence of
+derived columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="datareactor.atoms.RandomNoiseAtom">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.atoms.</code><code class="sig-name descname">RandomNoiseAtom</code><a class="reference internal" href="../_modules/datareactor/atoms/randomnoise.html#RandomNoiseAtom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.RandomNoiseAtom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datareactor.atoms.base.html#datareactor.atoms.base.Atom" title="datareactor.atoms.base.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">datareactor.atoms.base.Atom</span></code></a></p>
+<p>Generate a new column with random noise.</p>
+<p>The <cite>RandomNoiseAtom</cite> generates derived columns which contain random values.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.RandomNoiseAtom.derive" title="datareactor.atoms.RandomNoiseAtom.derive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive</span></code></a>(dataset, table_name)</p></td>
+<td><p>This function generates a “derived” column filled with random values.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datareactor.atoms.RandomNoiseAtom.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">table_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/randomnoise.html#RandomNoiseAtom.derive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.RandomNoiseAtom.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a “derived” column filled with random values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p></li>
+<li><p><strong>table_name</strong> (<em>str</em>) – The name of the target table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="datareactor.atoms.FeatureToolsAtom">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.atoms.</code><code class="sig-name descname">FeatureToolsAtom</code><a class="reference internal" href="../_modules/datareactor/atoms/featuretools.html#FeatureToolsAtom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.FeatureToolsAtom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datareactor.atoms.base.html#datareactor.atoms.base.Atom" title="datareactor.atoms.base.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">datareactor.atoms.base.Atom</span></code></a></p>
+<p>The <cite>FeatureToolsAtom</cite> generates derived columns based on the features
+generated by the <cite>featuretools</cite> library.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.FeatureToolsAtom.derive" title="datareactor.atoms.FeatureToolsAtom.derive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive</span></code></a>(dataset, table_name)</p></td>
+<td><p>This function generates derived columns using featuretools.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datareactor.atoms.FeatureToolsAtom.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">table_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/featuretools.html#FeatureToolsAtom.derive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.FeatureToolsAtom.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates derived columns using featuretools. It is not
+completely implemented yet and featuretools does not support all of the
+types of relational datasets supported by Metadata.JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p></li>
+<li><p><strong>table_name</strong> (<em>str</em>) – The name of the target table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="datareactor.atoms.AddNumericalAtom">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.atoms.</code><code class="sig-name descname">AddNumericalAtom</code><a class="reference internal" href="../_modules/datareactor/atoms/addnumerical.html#AddNumericalAtom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.AddNumericalAtom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datareactor.atoms.base.html#datareactor.atoms.base.Atom" title="datareactor.atoms.base.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">datareactor.atoms.base.Atom</span></code></a></p>
+<p>The <cite>AddNumericalAtom</cite> generates a derived column which contains the sum
+of all numerical columns in the same table.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.AddNumericalAtom.derive" title="datareactor.atoms.AddNumericalAtom.derive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive</span></code></a>(dataset, table_name)</p></td>
+<td><p>Generate derived columns for the specified table.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datareactor.atoms.AddNumericalAtom.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">table_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/addnumerical.html#AddNumericalAtom.derive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.AddNumericalAtom.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate derived columns for the specified table.</p>
+<p>The <cite>derive</cite> function takes in a dataset and the name of the target
+column. It returns a list of derived columns which can be concatenated
+to the target table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p></li>
+<li><p><strong>table_name</strong> (<em>str</em>) – The name of the target table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -220,7 +451,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="datareactor.sieve.html" class="btn btn-neutral float-right" title="datareactor.sieve package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datareactor.atoms.addnumerical.html" class="btn btn-neutral float-right" title="datareactor.atoms.addnumerical module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="datareactor.html" class="btn btn-neutral float-left" title="datareactor package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

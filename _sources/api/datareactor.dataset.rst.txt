@@ -1,0 +1,7 @@
+datareactor.dataset module
+==========================
+
+.. automodule:: datareactor.dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:

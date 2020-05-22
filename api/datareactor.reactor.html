@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>datareactor.datareactor module &mdash; DataReactor 0.1.0.dev0 documentation</title>
+  <title>datareactor.reactor module &mdash; DataReactor 0.1.0.dev0 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Contributing" href="../contributing.html" />
-    <link rel="prev" title="datareactor.sieve package" href="datareactor.sieve.html" /> 
+    <link rel="prev" title="datareactor.dataset module" href="datareactor.dataset.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,19 +83,26 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html#installation">Installation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">DataReactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#install">Install</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html#install-from-source">Install from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readme.html#install-for-development">Install for Development</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#quickstart">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#prepare-a-dataset">Prepare a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#transform-the-dataset">Transform the dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#what-s-next">What’s next?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="datareactor.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datareactor.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="datareactor.atoms.html">datareactor.atoms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datareactor.atoms.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="datareactor.atoms.html#module-datareactor.atoms">Module contents</a></li>
 </ul>
 </li>
@@ -106,7 +113,8 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="datareactor.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">datareactor.datareactor module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.dataset.html">datareactor.dataset module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">datareactor.reactor module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datareactor.html#module-datareactor">Module contents</a></li>
@@ -184,14 +192,14 @@
         
           <li><a href="datareactor.html">datareactor package</a> &raquo;</li>
         
-      <li>datareactor.datareactor module</li>
+      <li>datareactor.reactor module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/data-dev/DataReactor/blob/master/docs/api/datareactor.datareactor.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/data-dev/DataReactor/blob/master/docs/api/datareactor.reactor.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -205,8 +213,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-datareactor.datareactor">
-<span id="datareactor-datareactor-module"></span><h1>datareactor.datareactor module<a class="headerlink" href="#module-datareactor.datareactor" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-datareactor.reactor">
+<span id="datareactor-reactor-module"></span><h1>datareactor.reactor module<a class="headerlink" href="#module-datareactor.reactor" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.reactor.DataReactor" title="datareactor.reactor.DataReactor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataReactor</span></code></a>([atoms, sieve])</p></td>
+<td><p>Transform datasets by generating derived columns.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="datareactor.reactor.DataReactor">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.reactor.</code><code class="sig-name descname">DataReactor</code><span class="sig-paren">(</span><em class="sig-param">atoms=None</em>, <em class="sig-param">sieve=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/reactor.html#DataReactor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.reactor.DataReactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Transform datasets by generating derived columns.</p>
+<p>The <cite>DataReactor</cite> class provides methods for transforming relational
+datasets by creating derived columns with known lineage.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.reactor.DataReactor.transform" title="datareactor.reactor.DataReactor.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(source, destination)</p></td>
+<td><p>Read, transform, and write the dataset.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="datareactor.reactor.DataReactor.atoms">
+<code class="sig-name descname">atoms</code><a class="headerlink" href="#datareactor.reactor.DataReactor.atoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <cite>Atom</cite> objects to apply to generate columns.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="datareactor.reactor.DataReactor.sieve">
+<code class="sig-name descname">sieve</code><a class="headerlink" href="#datareactor.reactor.DataReactor.sieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sieve to use to filter columns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="datareactor.reactor.DataReactor.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">destination</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/reactor.html#DataReactor.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.reactor.DataReactor.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read, transform, and write the dataset.</p>
+<p>This function reads the dataset from the source location, generates
+derived columns using the atoms, filters the derived columns using a
+sieve, and writes the modified dataset to the destination location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em>) – The dataset path to read from.</p></li>
+<li><p><strong>destination</strong> (<em>str</em>) – The dataset path to write to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -220,7 +290,7 @@
         <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="datareactor.sieve.html" class="btn btn-neutral float-left" title="datareactor.sieve package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datareactor.dataset.html" class="btn btn-neutral float-left" title="datareactor.dataset module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

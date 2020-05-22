@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; DataReactor 0.1.0.dev0 documentation</title>
+  <title>DataReactor &mdash; DataReactor 0.1.0.dev0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="readme.html" /> 
+    <link rel="next" title="DataReactor" href="readme.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,19 +82,26 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#installation">Installation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">DataReactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#install">Install</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="readme.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readme.html#install-from-source">Install from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readme.html#install-for-development">Install for Development</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#quickstart">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#prepare-a-dataset">Prepare a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#transform-the-dataset">Transform the dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#what-s-next">What’s next?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/datareactor.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/datareactor.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/datareactor.atoms.html">datareactor.atoms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/datareactor.atoms.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/datareactor.atoms.html#module-datareactor.atoms">Module contents</a></li>
 </ul>
 </li>
@@ -105,7 +112,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/datareactor.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/datareactor.datareactor.html">datareactor.datareactor module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/datareactor.dataset.html">datareactor.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/datareactor.reactor.html">datareactor.reactor module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/datareactor.html#module-datareactor">Module contents</a></li>
@@ -181,7 +189,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Overview</li>
+      <li>DataReactor</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -202,23 +210,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>
-    <a href="https://github.com/data-dev/DataReactor/actions" alt="Github Actions">
-        <img src="https://img.shields.io/github/workflow/status/data-dev/DataReactor/Run%20Tests" /></a>
-    <a href="https://codecov.io/gh/data-dev/DataReactor" alt="Code Coverage">
-        <img src="https://codecov.io/gh/data-dev/DataReactor/branch/master/graph/badge.svg" /></a>
-    <a href="https://github.com/data-dev/DataReactor/pulse" alt="Commit Activity">
-        <img src="https://img.shields.io/github/commit-activity/m/data-dev/DataReactor" /></a>
-</p><div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="datareactor">
+<h1>DataReactor<a class="headerlink" href="#datareactor" title="Permalink to this headline">¶</a></h1>
 <p>Augmenting relational datasets by generating derived columns with known lineage.</p>
 <ul class="simple">
 <li><p>Documentation: <a class="reference external" href="https://data-dev.github.io/DataReactor">https://data-dev.github.io/DataReactor</a></p></li>
 <li><p>Homepage: <a class="reference external" href="https://github.com/data-dev/DataReactor">https://github.com/data-dev/DataReactor</a></p></li>
 </ul>
 </div>
-<div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install">
+<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <p><strong>DataReactor</strong> has been developed and tested on <a class="reference external" href="https://www.python.org/downloads/">Python 3.5, 3.6, 3.7 and 3.8</a></p>
@@ -264,10 +265,51 @@ make install
 for development.</p>
 <p>Please head to the <a class="reference external" href="https://data-dev.github.io/DataReactor/contributing.html#get-started">Contributing Guide</a>
 for more details about this process.</p>
+</div>
+</div>
+<div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>In this short tutorial we will guide you through a series of steps that will help you
+getting started with <strong>DataReactor</strong>.</p>
+<div class="section" id="prepare-a-dataset">
+<h2>Prepare a dataset<a class="headerlink" href="#prepare-a-dataset" title="Permalink to this headline">¶</a></h2>
+<p>A few example datasets can be found in the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> directory. To prepare your
+own datasets, you can use the <a class="reference external" href="https://github.com/data-dev/MetaData">metad</a>
+library. Datasets are expected to follow the <code class="docutils literal notranslate"><span class="pre">metad</span></code> format which consists of a
+directory with the following structure:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>/&lt;dataset_name&gt;
+    &lt;table_name&gt;.csv
+    &lt;table_name&gt;.csv
+    &lt;table_name&gt;.csv
+    metadata.json
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform-the-dataset">
+<h2>Transform the dataset<a class="headerlink" href="#transform-the-dataset" title="Permalink to this headline">¶</a></h2>
+<p>To create an expanded copy of the <code class="docutils literal notranslate"><span class="pre">university</span></code> dataset, run the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datareactor</span> <span class="kn">import</span> <span class="n">DataReactor</span>
+
+<span class="n">reactor</span> <span class="o">=</span> <span class="n">DataReactor</span><span class="p">()</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;datasets/university&quot;</span><span class="p">,</span>
+    <span class="n">destination</span><span class="o">=</span><span class="s2">&quot;/tmp/university&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This will read the dataset from the <code class="docutils literal notranslate"><span class="pre">source</span></code> directory and generate an expanded
+dataset in the <code class="docutils literal notranslate"><span class="pre">destination</span></code> directory which will contain additional columns
+and will have an updated <code class="docutils literal notranslate"><span class="pre">metadata.json</span></code> file which contains information about
+those new columns and their lineage.</p>
+</div>
+</div>
+<div class="section" id="what-s-next">
+<h1>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h1>
+<p>For more details about <strong>DataReactor</strong> and all its possibilities
+and features, please check the <a class="reference external" href="https://data-dev.github.io/DataReactor/">documentation site</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -287,7 +329,7 @@ for more details about this process.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="readme.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="readme.html" class="btn btn-neutral float-right" title="DataReactor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

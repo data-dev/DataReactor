@@ -1,0 +1,7 @@
+datareactor.atoms.randomnoise module
+====================================
+
+.. automodule:: datareactor.atoms.randomnoise
+   :members:
+   :undoc-members:
+   :show-inheritance:

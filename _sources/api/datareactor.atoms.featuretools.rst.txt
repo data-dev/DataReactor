@@ -1,0 +1,7 @@
+datareactor.atoms.featuretools module
+=====================================
+
+.. automodule:: datareactor.atoms.featuretools
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -14,7 +14,8 @@ Submodules
 
 .. toctree::
 
-   datareactor.datareactor
+   datareactor.dataset
+   datareactor.reactor
 
 Module contents
 ---------------

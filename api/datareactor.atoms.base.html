@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>datareactor.sieve package &mdash; DataReactor 0.1.0.dev0 documentation</title>
+  <title>datareactor.atoms.base module &mdash; DataReactor 0.1.0.dev0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="datareactor.dataset module" href="datareactor.dataset.html" />
-    <link rel="prev" title="datareactor.atoms.randomnoise module" href="datareactor.atoms.randomnoise.html" /> 
+    <link rel="next" title="datareactor.atoms.featuretools module" href="datareactor.atoms.featuretools.html" />
+    <link rel="prev" title="datareactor.atoms.addnumerical module" href="datareactor.atoms.addnumerical.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,13 +101,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="datareactor.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="datareactor.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datareactor.atoms.html">datareactor.atoms package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="datareactor.atoms.html#submodules">Submodules</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="datareactor.atoms.html">datareactor.atoms package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="datareactor.atoms.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="datareactor.atoms.html#module-datareactor.atoms">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">datareactor.sieve package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-datareactor.sieve">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.sieve.html">datareactor.sieve package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datareactor.sieve.html#module-datareactor.sieve">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -192,14 +192,16 @@
         
           <li><a href="datareactor.html">datareactor package</a> &raquo;</li>
         
-      <li>datareactor.sieve package</li>
+          <li><a href="datareactor.atoms.html">datareactor.atoms package</a> &raquo;</li>
+        
+      <li>datareactor.atoms.base module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/data-dev/DataReactor/blob/master/docs/api/datareactor.sieve.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/data-dev/DataReactor/blob/master/docs/api/datareactor.atoms.base.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -213,10 +215,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="datareactor-sieve-package">
-<h1>datareactor.sieve package<a class="headerlink" href="#datareactor-sieve-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-datareactor.sieve">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datareactor.sieve" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="module-datareactor.atoms.base">
+<span id="datareactor-atoms-base-module"></span><h1>datareactor.atoms.base module<a class="headerlink" href="#module-datareactor.atoms.base" title="Permalink to this headline">¶</a></h1>
 <p><strong>Classes</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -224,16 +224,18 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.sieve.Sieve" title="datareactor.sieve.Sieve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sieve</span></code></a></p></td>
-<td><p>The <cite>Sieve</cite> class filters out derived columns that don’t make sense.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.base.Atom" title="datareactor.atoms.base.Atom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Atom</span></code></a></p></td>
+<td><p>Generate derived columns for a dataset.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
-<dt id="datareactor.sieve.Sieve">
-<em class="property">class </em><code class="sig-prename descclassname">datareactor.sieve.</code><code class="sig-name descname">Sieve</code><a class="reference internal" href="../_modules/datareactor/sieve.html#Sieve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.sieve.Sieve" title="Permalink to this definition">¶</a></dt>
+<dt id="datareactor.atoms.base.Atom">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.atoms.base.</code><code class="sig-name descname">Atom</code><a class="reference internal" href="../_modules/datareactor/atoms/base.html#Atom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.base.Atom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The <cite>Sieve</cite> class filters out derived columns that don’t make sense.</p>
+<p>Generate derived columns for a dataset.</p>
+<p>Each <cite>Atom</cite> is responsible for generating one or more derived columns for
+the target table.</p>
 <p><strong>Methods</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -241,34 +243,58 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.sieve.Sieve.filter" title="datareactor.sieve.Sieve.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(dataset, derived_columns)</p></td>
-<td><p>The <cite>filter</cite> function takes in a dataset and a list of derived columns; it returns a subset of the derived columns after removing any derived columns which don’t make sense - i.e.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.base.Atom.derive" title="datareactor.atoms.base.Atom.derive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive</span></code></a>(dataset, table_name)</p></td>
+<td><p>Generate derived columns for the specified table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#datareactor.atoms.base.Atom.transform" title="datareactor.atoms.base.Atom.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(dataset)</p></td>
+<td><p>Generate derived columns for the dataset.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="datareactor.sieve.Sieve.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">derived_columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/sieve.html#Sieve.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.sieve.Sieve.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <cite>filter</cite> function takes in a dataset and a list of derived columns;
-it returns a subset of the derived columns after removing any derived
-columns which don’t make sense - i.e. all constant values, redundant
-with another column, etc.
-:param dataset: The dataset.
-:type dataset: Dataset
-:param (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>): The derived columns.</p>
+<dt id="datareactor.atoms.base.Atom.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">table_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/base.html#Atom.derive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.base.Atom.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate derived columns for the specified table.</p>
+<p>The <cite>derive</cite> function takes in a dataset and the name of the target
+column. It returns a list of derived columns which can be concatenated
+to the target table.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The derived columns.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p></li>
+<li><p><strong>table_name</strong> (<em>str</em>) – The name of the target table.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="datareactor.atoms.base.Atom.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/base.html#Atom.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.base.Atom.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate derived columns for the dataset.</p>
+<p>The <cite>transform</cite> function takes in a dataset and returns a sequence of
+derived columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The derived columns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
 </div>
 
 
@@ -279,10 +305,10 @@ with another column, etc.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="datareactor.dataset.html" class="btn btn-neutral float-right" title="datareactor.dataset module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datareactor.atoms.featuretools.html" class="btn btn-neutral float-right" title="datareactor.atoms.featuretools module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="datareactor.atoms.randomnoise.html" class="btn btn-neutral float-left" title="datareactor.atoms.randomnoise module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datareactor.atoms.addnumerical.html" class="btn btn-neutral float-left" title="datareactor.atoms.addnumerical module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
