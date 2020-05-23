@@ -15,5 +15,4 @@ Submodules
    datareactor.atoms.aggregation
    datareactor.atoms.base
    datareactor.atoms.featuretools
-   datareactor.atoms.randomnoise
    datareactor.atoms.rowcount

@@ -205,14 +205,14 @@
 <span class="kn">from</span> <span class="nn">datareactor.atoms.base</span> <span class="kn">import</span> <span class="n">Atom</span>
 
 
-<div class="viewcode-block" id="AggregationAtom"><a class="viewcode-back" href="../../../api/datareactor.atoms.aggregation.html#datareactor.atoms.aggregation.AggregationAtom">[docs]</a><span class="k">class</span> <span class="nc">AggregationAtom</span><span class="p">(</span><span class="n">Atom</span><span class="p">):</span>
+<div class="viewcode-block" id="AggregationAtom"><a class="viewcode-back" href="../../../api/datareactor.atoms.aggregation.html#datareactor.atoms.AggregationAtom">[docs]</a><span class="k">class</span> <span class="nc">AggregationAtom</span><span class="p">(</span><span class="n">Atom</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply aggregation functions to child rows.</span>
 
 <span class="sd">    The `AggregationAtom` generates derived columns which are the resultt of</span>
 <span class="sd">    applying aggregation functions to groups of child rows.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="AggregationAtom.derive"><a class="viewcode-back" href="../../../api/datareactor.atoms.aggregation.html#datareactor.atoms.aggregation.AggregationAtom.derive">[docs]</a>    <span class="k">def</span> <span class="nf">derive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+<div class="viewcode-block" id="AggregationAtom.derive"><a class="viewcode-back" href="../../../api/datareactor.atoms.aggregation.html#datareactor.atoms.AggregationAtom.derive">[docs]</a>    <span class="k">def</span> <span class="nf">derive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply pandas aggregation functions to groups of rows.</span>
 
 <span class="sd">        Returns:</span>
