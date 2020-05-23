@@ -254,15 +254,6 @@
 
             <span class="c1"># Set null counts to 0 and specify constraints</span>
             <span class="n">values</span> <span class="o">=</span> <span class="n">parent_table</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-            <span class="n">constraint</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;constraint_type&quot;</span><span class="p">:</span> <span class="s2">&quot;lineage&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;related_fields&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span><span class="s2">&quot;table&quot;</span><span class="p">:</span> <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">],</span> <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]}</span>
-                <span class="p">],</span>
-                <span class="s2">&quot;fields_under_consideration&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span><span class="s2">&quot;table&quot;</span><span class="p">:</span> <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_table&quot;</span><span class="p">],</span> <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="n">column_name</span><span class="p">}</span>
-                <span class="p">]</span>
-            <span class="p">}</span>
 
             <span class="c1"># Build a derived column object</span>
             <span class="n">derived_column</span> <span class="o">=</span> <span class="n">DerivedColumn</span><span class="p">()</span>
@@ -272,7 +263,16 @@
                 <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">column_name</span><span class="p">,</span>
                 <span class="s2">&quot;data_type&quot;</span><span class="p">:</span> <span class="s2">&quot;numerical&quot;</span>
             <span class="p">}</span>
-            <span class="n">derived_column</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
+            <span class="n">derived_column</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;constraint_type&quot;</span><span class="p">:</span> <span class="s2">&quot;lineage&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;related_fields&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;table&quot;</span><span class="p">:</span> <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">],</span> <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]}</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;fields_under_consideration&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;table&quot;</span><span class="p">:</span> <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_table&quot;</span><span class="p">],</span> <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="n">column_name</span><span class="p">}</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;expression&quot;</span><span class="p">:</span> <span class="s2">&quot;datareactor.atoms.RowCountAtom&quot;</span>
+            <span class="p">}</span>
 
             <span class="k">yield</span> <span class="n">derived_column</span></div></div>
 </pre></div>
