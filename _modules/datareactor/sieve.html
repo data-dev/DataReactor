@@ -101,13 +101,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../api/datareactor.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../api/datareactor.atoms.html">datareactor.atoms package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../api/datareactor.atoms.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../api/datareactor.atoms.html#module-datareactor.atoms">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../api/datareactor.sieve.html">datareactor.sieve package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../api/datareactor.sieve.html#module-datareactor.sieve">Module contents</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/datareactor.sieve.html">datareactor.sieve package</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/datareactor.html#submodules">Submodules</a><ul>
@@ -115,7 +111,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../api/datareactor.reactor.html">datareactor.reactor module</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../api/datareactor.html#module-datareactor">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a><ul>
@@ -210,50 +205,63 @@
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <div class="viewcode-block" id="Sieve"><a class="viewcode-back" href="../../api/datareactor.sieve.html#datareactor.sieve.Sieve">[docs]</a><span class="k">class</span> <span class="nc">Sieve</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The `Sieve` class filters out derived columns that don&#39;t make sense.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Sieve.filter"><a class="viewcode-back" href="../../api/datareactor.sieve.html#datareactor.sieve.Sieve.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">derived_columns</span><span class="p">):</span>
+<div class="viewcode-block" id="Sieve.filter"><a class="viewcode-back" href="../../api/datareactor.sieve.html#datareactor.sieve.Sieve.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">columns</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The `filter` function takes in a dataset and a list of derived columns;</span>
 <span class="sd">        it returns a subset of the derived columns after removing any derived</span>
 <span class="sd">        columns which don&#39;t make sense - i.e. all constant values, redundant</span>
 <span class="sd">        with another column, etc.</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            dataset (Dataset): The dataset.</span>
-<span class="sd">            (:obj:`list` of :obj:`DerivedColumn`): The derived columns.</span>
+<span class="sd">            columns (:obj:`list` of :obj:`DerivedColumn`): The derived columns.</span>
+
 <span class="sd">        Returns:</span>
-<span class="sd">            (:obj:`list` of :obj:`DerivedColumn`): The derived columns.</span>
+<span class="sd">            A list of derived columns.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">value_hashes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="n">filtered_derived_columns</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">derived_column</span> <span class="ow">in</span> <span class="n">derived_columns</span><span class="p">:</span>
-            <span class="n">values</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">derived_column</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+        <span class="n">filtered_columns</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">column</span><span class="o">.</span><span class="n">values</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s2">&quot;Skipping </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">, it is NaN more than half the time.&quot;</span><span class="p">,</span>
+                    <span class="n">column</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
+                    <span class="n">column</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">values</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">column</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Skipping </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">, it has a constant value of </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
-                            <span class="n">derived_column</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
-                            <span class="n">derived_column</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                            <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                            <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s2">&quot;Skipping </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">, it has a constant value of </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
+                    <span class="n">column</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
+                    <span class="n">column</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="n">value_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">value_hash</span> <span class="ow">in</span> <span class="n">value_hashes</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Skipping </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">, it is identical to </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
-                            <span class="n">derived_column</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
-                            <span class="n">derived_column</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                            <span class="n">value_hashes</span><span class="p">[</span><span class="n">value_hash</span><span class="p">]</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
-                            <span class="n">value_hashes</span><span class="p">[</span><span class="n">value_hash</span><span class="p">]</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
-                            <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s2">&quot;Skipping </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">, it is identical to </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
+                    <span class="n">column</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
+                    <span class="n">column</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="n">value_hashes</span><span class="p">[</span><span class="n">value_hash</span><span class="p">]</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span>
+                    <span class="n">value_hashes</span><span class="p">[</span><span class="n">value_hash</span><span class="p">]</span><span class="o">.</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
                 <span class="k">continue</span>
-            <span class="n">value_hashes</span><span class="p">[</span><span class="n">value_hash</span><span class="p">]</span> <span class="o">=</span> <span class="n">derived_column</span>
+            <span class="n">value_hashes</span><span class="p">[</span><span class="n">value_hash</span><span class="p">]</span> <span class="o">=</span> <span class="n">column</span>
 
-            <span class="n">filtered_derived_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">derived_column</span><span class="p">)</span>
+            <span class="n">filtered_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">filtered_derived_columns</span></div></div>
+        <span class="k">return</span> <span class="n">filtered_columns</span></div></div>
 </pre></div>
 
            </div>

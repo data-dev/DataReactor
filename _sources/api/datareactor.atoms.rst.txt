@@ -1,20 +1,19 @@
 datareactor.atoms package
 =========================
 
+.. automodule:: datareactor.atoms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
 .. toctree::
 
    datareactor.atoms.addnumerical
+   datareactor.atoms.aggregation
    datareactor.atoms.base
    datareactor.atoms.featuretools
    datareactor.atoms.randomnoise
-
-Module contents
----------------
-
-.. automodule:: datareactor.atoms
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   datareactor.atoms.rowcount

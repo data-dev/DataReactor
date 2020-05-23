@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview: module code &mdash; DataReactor 0.1.0.dev0 documentation</title>
+  <title>datareactor.atoms.aggregation module &mdash; DataReactor 0.1.0.dev0 documentation</title>
   
 
   
@@ -36,7 +36,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datareactor.atoms.base module" href="datareactor.atoms.base.html" />
+    <link rel="prev" title="datareactor.atoms.addnumerical module" href="datareactor.atoms.addnumerical.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,19 +98,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../readme.html#what-s-next">What’s next?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../api/datareactor.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../api/datareactor.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/datareactor.atoms.html">datareactor.atoms package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../api/datareactor.atoms.html#submodules">Submodules</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="datareactor.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="datareactor.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="datareactor.atoms.html">datareactor.atoms package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="datareactor.atoms.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../api/datareactor.sieve.html">datareactor.sieve package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.sieve.html">datareactor.sieve package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api/datareactor.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/datareactor.dataset.html">datareactor.dataset module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/datareactor.reactor.html">datareactor.reactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datareactor.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.dataset.html">datareactor.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datareactor.reactor.html">datareactor.reactor module</a></li>
 </ul>
 </li>
 </ul>
@@ -183,10 +185,20 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Overview: module code</li>
+          <li><a href="datareactor.html">datareactor package</a> &raquo;</li>
+        
+          <li><a href="datareactor.atoms.html">datareactor.atoms package</a> &raquo;</li>
+        
+      <li>datareactor.atoms.aggregation module</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/data-dev/DataReactor/blob/master/docs/api/datareactor.atoms.aggregation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
         
       </li>
     
@@ -198,22 +210,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>All modules for which code is available</h1>
-<ul><li><a href="datareactor/atoms/addnumerical.html">datareactor.atoms.addnumerical</a></li>
-<li><a href="datareactor/atoms/aggregation.html">datareactor.atoms.aggregation</a></li>
-<li><a href="datareactor/atoms/base.html">datareactor.atoms.base</a></li>
-<li><a href="datareactor/atoms/featuretools.html">datareactor.atoms.featuretools</a></li>
-<li><a href="datareactor/atoms/randomnoise.html">datareactor.atoms.randomnoise</a></li>
-<li><a href="datareactor/atoms/rowcount.html">datareactor.atoms.rowcount</a></li>
-<li><a href="datareactor/dataset.html">datareactor.dataset</a></li>
-<li><a href="datareactor/reactor.html">datareactor.reactor</a></li>
-<li><a href="datareactor/sieve.html">datareactor.sieve</a></li>
-</ul>
+  <div class="section" id="module-datareactor.atoms.aggregation">
+<span id="datareactor-atoms-aggregation-module"></span><h1>datareactor.atoms.aggregation module<a class="headerlink" href="#module-datareactor.atoms.aggregation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.aggregation.AggregationAtom" title="datareactor.atoms.aggregation.AggregationAtom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AggregationAtom</span></code></a></p></td>
+<td><p>Apply aggregation functions to child rows.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="datareactor.atoms.aggregation.AggregationAtom">
+<em class="property">class </em><code class="sig-prename descclassname">datareactor.atoms.aggregation.</code><code class="sig-name descname">AggregationAtom</code><a class="reference internal" href="../_modules/datareactor/atoms/aggregation.html#AggregationAtom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.aggregation.AggregationAtom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datareactor.atoms.base.html#datareactor.atoms.base.Atom" title="datareactor.atoms.base.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">datareactor.atoms.base.Atom</span></code></a></p>
+<p>Apply aggregation functions to child rows.</p>
+<p>The <cite>AggregationAtom</cite> generates derived columns which are the resultt of
+applying aggregation functions to groups of child rows.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.atoms.aggregation.AggregationAtom.derive" title="datareactor.atoms.aggregation.AggregationAtom.derive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive</span></code></a>(dataset, table_name)</p></td>
+<td><p>Apply pandas aggregation functions to groups of rows.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datareactor.atoms.aggregation.AggregationAtom.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">table_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/atoms/aggregation.html#AggregationAtom.derive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.atoms.aggregation.AggregationAtom.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply pandas aggregation functions to groups of rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The derived columns.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="datareactor.atoms.base.html" class="btn btn-neutral float-right" title="datareactor.atoms.base module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="datareactor.atoms.addnumerical.html" class="btn btn-neutral float-left" title="datareactor.atoms.addnumerical module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

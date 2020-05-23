@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="datareactor.dataset module" href="datareactor.dataset.html" />
-    <link rel="prev" title="datareactor.atoms.randomnoise module" href="datareactor.atoms.randomnoise.html" /> 
+    <link rel="prev" title="datareactor.atoms.rowcount module" href="datareactor.atoms.rowcount.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,13 +103,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="datareactor.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="datareactor.atoms.html">datareactor.atoms package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="datareactor.atoms.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="datareactor.atoms.html#module-datareactor.atoms">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">datareactor.sieve package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-datareactor.sieve">Module contents</a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">datareactor.sieve package</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datareactor.html#submodules">Submodules</a><ul>
@@ -117,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="datareactor.reactor.html">datareactor.reactor module</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="datareactor.html#module-datareactor">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
@@ -213,10 +208,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="datareactor-sieve-package">
-<h1>datareactor.sieve package<a class="headerlink" href="#datareactor-sieve-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-datareactor.sieve">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datareactor.sieve" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="module-datareactor.sieve">
+<span id="datareactor-sieve-package"></span><h1>datareactor.sieve package<a class="headerlink" href="#module-datareactor.sieve" title="Permalink to this headline">¶</a></h1>
 <p><strong>Classes</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -241,34 +234,33 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.sieve.Sieve.filter" title="datareactor.sieve.Sieve.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(dataset, derived_columns)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datareactor.sieve.Sieve.filter" title="datareactor.sieve.Sieve.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(dataset, columns)</p></td>
 <td><p>The <cite>filter</cite> function takes in a dataset and a list of derived columns; it returns a subset of the derived columns after removing any derived columns which don’t make sense - i.e.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="datareactor.sieve.Sieve.filter">
-<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">derived_columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/sieve.html#Sieve.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.sieve.Sieve.filter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datareactor/sieve.html#Sieve.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datareactor.sieve.Sieve.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <cite>filter</cite> function takes in a dataset and a list of derived columns;
 it returns a subset of the derived columns after removing any derived
 columns which don’t make sense - i.e. all constant values, redundant
-with another column, etc.
-:param dataset: The dataset.
-:type dataset: Dataset
-:param (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>): The derived columns.</p>
+with another column, etc.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The derived columns.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="datareactor.html#datareactor.Dataset" title="datareactor.Dataset"><em>Dataset</em></a>) – The dataset.</p></li>
+<li><p><strong>columns</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>) – The derived columns.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">DerivedColumn</span></code>)</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of derived columns.</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
 </div>
 
 
@@ -282,7 +274,7 @@ with another column, etc.
         <a href="datareactor.dataset.html" class="btn btn-neutral float-right" title="datareactor.dataset module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="datareactor.atoms.randomnoise.html" class="btn btn-neutral float-left" title="datareactor.atoms.randomnoise module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datareactor.atoms.rowcount.html" class="btn btn-neutral float-left" title="datareactor.atoms.rowcount module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

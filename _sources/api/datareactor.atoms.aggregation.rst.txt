@@ -1,0 +1,7 @@
+datareactor.atoms.aggregation module
+====================================
+
+.. automodule:: datareactor.atoms.aggregation
+   :members:
+   :undoc-members:
+   :show-inheritance:

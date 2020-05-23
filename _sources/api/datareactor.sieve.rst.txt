@@ -1,9 +1,6 @@
 datareactor.sieve package
 =========================
 
-Module contents
----------------
-
 .. automodule:: datareactor.sieve
    :members:
    :undoc-members:

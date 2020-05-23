@@ -1,0 +1,7 @@
+datareactor.atoms.rowcount module
+=================================
+
+.. automodule:: datareactor.atoms.rowcount
+   :members:
+   :undoc-members:
+   :show-inheritance:

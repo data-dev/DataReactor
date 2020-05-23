@@ -1,6 +1,11 @@
 datareactor package
 ===================
 
+.. automodule:: datareactor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
@@ -16,11 +21,3 @@ Submodules
 
    datareactor.dataset
    datareactor.reactor
-
-Module contents
----------------
-
-.. automodule:: datareactor
-   :members:
-   :undoc-members:
-   :show-inheritance:
