@@ -1,6 +1,8 @@
-from datareactor.atoms import Atom
+from datareactor.atoms import AddNumericalAtom, AggregationAtom, RowCountAtom
 from datareactor.dataset import Dataset
 from datareactor.sieve import Sieve
+
+ATOMS = [AddNumericalAtom(), AggregationAtom(), RowCountAtom()]
 
 
 class DataReactor():
@@ -20,9 +22,7 @@ class DataReactor():
         Args:
             atoms: A list of `Atom` objects to apply.
         """
-        if not atoms:
-            atoms = [atom() for atom in Atom.__subclasses__()]
-        self.atoms = atoms
+        self.atoms = atoms if atoms else ATOMS
         self.sieve = sieve if sieve else Sieve()
 
     def transform(self, source, destination):

@@ -1,6 +1,7 @@
 import logging
 
 import numpy as np
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +28,7 @@ class Sieve():
         value_hashes = dict()
         filtered_columns = []
         for column in columns:
-            if np.mean(np.isnan(column.values)) > 0.5:
+            if np.mean(pd.isna(column.values)) > 0.5:
                 logger.info(
                     "Skipping %s.%s, it is NaN more than half the time.",
                     column.table_name,

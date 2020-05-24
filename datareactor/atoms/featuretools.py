@@ -75,7 +75,8 @@ class FeatureToolsAtom(Atom):
         for table_name, df in dataset.tables.items():
             if len(df.columns) == 1:
                 continue  # skipping single column tables
-            primary_key = dataset.metadata.get_table(table_name)["primary_key"]
+            table = dataset.metadata.get_table(table_name)
+            primary_key = table["primary_key"] if "primary_key" in table else None
             if isinstance(primary_key, str):
                 es = es.entity_from_dataframe(
                     entity_id=table_name, dataframe=df.copy(), index=primary_key)
@@ -102,8 +103,11 @@ class FeatureToolsAtom(Atom):
                     foreign_key["ref_table"],
                     foreign_key["table"])
                 continue
-            es = es.add_relationship(ft.Relationship(
-                es[foreign_key["ref_table"]][foreign_key["ref_field"]],
-                es[foreign_key["table"]][foreign_key["field"]]
-            ))
+            try:
+                es = es.add_relationship(ft.Relationship(
+                    es[foreign_key["ref_table"]][foreign_key["ref_field"]],
+                    es[foreign_key["table"]][foreign_key["field"]]
+                ))
+            except ValueError as err:
+                logger.warning(err)
         return es

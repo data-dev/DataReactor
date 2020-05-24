@@ -1,4 +1,4 @@
-from random import choices
+import numpy as np
 
 from datareactor.atoms.base import Atom
 from datareactor.dataset import DerivedColumn
@@ -16,9 +16,8 @@ class AddNumericalAtom(Atom):
         """
         df = dataset.tables[table_name].select_dtypes("number")
         if len(df.columns) > 1:
-            cols = choices(df.columns, k=5)
-            df = df[list(set(cols))]
-        df.fillna(0.0)
+            cols = np.random.choice(df.columns, size=5)
+            df = df[list(set(cols))].copy().fillna(0.0)
         new_col = df.sum(axis=1)
 
         derived_column = DerivedColumn()

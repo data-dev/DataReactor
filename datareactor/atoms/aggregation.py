@@ -1,5 +1,11 @@
+import logging
+
+import pandas as pd
+
 from datareactor import DerivedColumn
 from datareactor.atoms.base import Atom
+
+logger = logging.getLogger(__name__)
 
 
 class AggregationAtom(Atom):
@@ -26,45 +32,53 @@ class AggregationAtom(Atom):
                 (lambda x: x.sum(), "sum"),
                 (lambda x: x.max(), "max"),
                 (lambda x: x.min(), "min"),
-                (lambda x: x.std(), "std")
             ]:
+                logger.info("Applying aggregator %s to foreign key %s -> %s." % (
+                    op_name, fk["ref_table"], fk["table"]
+                ))
+
                 # Count the number of rows for each key.
                 child_table = dataset.tables[fk["table"]].copy()
                 if len(child_table.columns) <= 1:
                     continue
+                child_table = child_table.set_index(fk["field"]).select_dtypes("number")
                 child_counts = op(child_table.groupby(fk["field"]))
-                old_column_names = list(child_counts.columns)
-                child_counts.columns = ["%s(%s)" % (op_name, col_name)
-                                        for col_name in old_column_names]
+                column_names = list(child_counts.columns)
+                child_counts.columns = ["%s(%s)" % (op_name, col) for col in column_names]
 
                 # Merge the counts into the parent table
-                parent_table = dataset.tables[fk["ref_table"]]
-                parent_table = parent_table.set_index(fk["ref_field"])
-                parent_table = parent_table.join(child_counts).reset_index()
+                parent_table = dataset.tables[fk["ref_table"]].copy()
+                parent_table = pd.merge(
+                    parent_table.reset_index(),
+                    child_counts.reset_index(),
+                    how='left',
+                    left_on=fk["ref_field"],
+                    right_on=fk["field"]
+                ).set_index(fk["ref_field"])
 
-                for old_name, col_name in zip(old_column_names, child_counts.columns):
-                    if parent_table[col_name].dtype.kind != "f":
+                for column_name, derived_name in zip(column_names, child_counts.columns):
+                    if parent_table[derived_name].dtype.kind != "f":
                         continue
-                    if col_name in seen:
+                    if derived_name in seen:
                         continue
-                    seen.add(col_name)
+                    seen.add(derived_name)
 
-                    values = parent_table[col_name].fillna(0.0).values
+                    values = parent_table[derived_name].fillna(0.0).values
 
                     column = DerivedColumn()
                     column.table_name = table_name
                     column.values = values
                     column.field = {
-                        "name": col_name,
+                        "name": derived_name,
                         "data_type": "numerical"
                     }
                     column.constraint = {
                         "constraint_type": "lineage",
                         "related_fields": [
-                            {"table": fk["table"], "field": old_name}
+                            {"table": fk["table"], "field": column_name}
                         ],
                         "fields_under_consideration": [
-                            {"table": fk["ref_table"], "field": col_name}
+                            {"table": fk["ref_table"], "field": derived_name}
                         ],
                         "expression": "datareactor.atoms.AggregationAtom"
                     }

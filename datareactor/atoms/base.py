@@ -1,4 +1,8 @@
+import logging
+
 from datareactor.dataset import Dataset, DerivedColumn
+
+logger = logging.getLogger(__name__)
 
 
 class Atom():
@@ -23,6 +27,10 @@ class Atom():
         derived_columns = []
         assert isinstance(dataset, Dataset)
         for table_name in dataset.metadata.get_table_names():
+            logger.info("Generating columns in table %s using %s." % (
+                table_name,
+                self.__class__.__name__
+            ))
             for derived_column in self.derive(dataset, table_name):
                 assert isinstance(derived_column, DerivedColumn)
                 derived_columns.append(derived_column)

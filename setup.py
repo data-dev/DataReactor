@@ -14,6 +14,7 @@ with open('HISTORY.md', encoding='utf-8') as history_file:
 install_requires = [
     'metad',
     'featuretools',
+    'parameterized',
 ]
 
 setup_requires = [
@@ -72,6 +73,9 @@ setup(
     extras_require={
         'test': tests_require,
         'dev': development_requires + tests_require,
+    },
+    entry_points={
+        'console_scripts': ['datareactor = datareactor.__main__:main']
     },
     install_package_data=True,
     install_requires=install_requires,

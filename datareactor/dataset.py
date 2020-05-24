@@ -1,7 +1,10 @@
+import logging
 import os
 
 import pandas as pd
 from metad import MetaData
+
+logger = logging.getLogger(__name__)
 
 
 class DerivedColumn():
@@ -50,6 +53,11 @@ class Dataset():
         for table_name in self.metadata.get_table_names():
             path_to_csv = os.path.join(self.path_to_dataset, "%s.csv" % table_name)
             self.tables[table_name] = pd.read_csv(path_to_csv)
+            logger.info("Loaded table %s (%s rows, %s cols)" % (
+                table_name,
+                len(self.tables[table_name]),
+                len(self.tables[table_name].columns)
+            ))
 
     def export(self, path_to_dataset):
         """Write the dataset to disk.
@@ -66,6 +74,11 @@ class Dataset():
         for table_name, dataframe in self.tables.items():
             path_to_csv = os.path.join(path_to_dataset, "%s.csv" % table_name)
             dataframe.to_csv(path_to_csv, index=False)
+            logger.info("Exported table %s (%s rows, %s cols)" % (
+                table_name,
+                len(self.tables[table_name]),
+                len(self.tables[table_name].columns)
+            ))
 
     def add_columns(self, columns):
         """Add the derived columns to the dataset.

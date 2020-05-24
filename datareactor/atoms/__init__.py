@@ -9,6 +9,5 @@ __all__ = [
     'AggregationAtom',
     'Atom',
     'FeatureToolsAtom',
-    'RandomNoiseAtom',
     'RowCountAtom'
 ]
