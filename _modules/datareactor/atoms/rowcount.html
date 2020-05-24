@@ -237,6 +237,9 @@
             <span class="k">if</span> <span class="n">fk</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">table_name</span><span class="p">:</span>
                 <span class="c1"># Skip this relationship if the target table is the child</span>
                 <span class="k">continue</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fk</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="c1"># Skip this relationship if it involves a composite key</span>
+                <span class="k">continue</span>
 
             <span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;nb_rows_in_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fk</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>

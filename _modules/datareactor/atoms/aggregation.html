@@ -201,10 +201,14 @@
            <div itemprop="articleBody">
             
   <h1>Source code for datareactor.atoms.aggregation</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">datareactor</span> <span class="kn">import</span> <span class="n">DerivedColumn</span>
 <span class="kn">from</span> <span class="nn">datareactor.atoms.base</span> <span class="kn">import</span> <span class="n">Atom</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="AggregationAtom"><a class="viewcode-back" href="../../../api/datareactor.atoms.aggregation.html#datareactor.atoms.AggregationAtom">[docs]</a><span class="k">class</span> <span class="nc">AggregationAtom</span><span class="p">(</span><span class="n">Atom</span><span class="p">):</span>
@@ -232,10 +236,15 @@
                 <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;max&quot;</span><span class="p">),</span>
                 <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&quot;min&quot;</span><span class="p">),</span>
             <span class="p">]:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying aggregator </span><span class="si">%s</span><span class="s2"> to foreign key </span><span class="si">%s</span><span class="s2"> -&gt; </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">op_name</span><span class="p">,</span> <span class="n">fk</span><span class="p">[</span><span class="s2">&quot;ref_table&quot;</span><span class="p">],</span> <span class="n">fk</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span>
+                <span class="p">))</span>
+
                 <span class="c1"># Count the number of rows for each key.</span>
                 <span class="n">child_table</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">fk</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">child_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="k">continue</span>
+                <span class="n">child_table</span> <span class="o">=</span> <span class="n">child_table</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">fk</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">)</span>
                 <span class="n">child_counts</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">child_table</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">fk</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]))</span>
                 <span class="n">column_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">child_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
                 <span class="n">child_counts</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">op_name</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">column_names</span><span class="p">]</span>

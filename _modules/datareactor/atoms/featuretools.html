@@ -306,10 +306,13 @@
                     <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_table&quot;</span><span class="p">],</span>
                     <span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">])</span>
                 <span class="k">continue</span>
-            <span class="n">es</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">add_relationship</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Relationship</span><span class="p">(</span>
-                <span class="n">es</span><span class="p">[</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_table&quot;</span><span class="p">]][</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_field&quot;</span><span class="p">]],</span>
-                <span class="n">es</span><span class="p">[</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]][</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]]</span>
-            <span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">es</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">add_relationship</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Relationship</span><span class="p">(</span>
+                    <span class="n">es</span><span class="p">[</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_table&quot;</span><span class="p">]][</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;ref_field&quot;</span><span class="p">]],</span>
+                    <span class="n">es</span><span class="p">[</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]][</span><span class="n">foreign_key</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]]</span>
+                <span class="p">))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">es</span></div>
 </pre></div>
 
