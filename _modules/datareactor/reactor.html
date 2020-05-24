@@ -201,10 +201,11 @@
            <div itemprop="articleBody">
             
   <h1>Source code for datareactor.reactor</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">datareactor.atoms</span> <span class="kn">import</span> <span class="n">Atom</span>
+<span></span><span class="kn">from</span> <span class="nn">datareactor.atoms</span> <span class="kn">import</span> <span class="n">AddNumericalAtom</span><span class="p">,</span> <span class="n">AggregationAtom</span><span class="p">,</span> <span class="n">RowCountAtom</span>
 <span class="kn">from</span> <span class="nn">datareactor.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
 <span class="kn">from</span> <span class="nn">datareactor.sieve</span> <span class="kn">import</span> <span class="n">Sieve</span>
 
+<span class="n">ATOMS</span> <span class="o">=</span> <span class="p">[</span><span class="n">AddNumericalAtom</span><span class="p">(),</span> <span class="n">AggregationAtom</span><span class="p">(),</span> <span class="n">RowCountAtom</span><span class="p">()]</span>
 
 <div class="viewcode-block" id="DataReactor"><a class="viewcode-back" href="../../api/datareactor.reactor.html#datareactor.DataReactor">[docs]</a><span class="k">class</span> <span class="nc">DataReactor</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Transform datasets by generating derived columns.</span>
@@ -223,9 +224,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            atoms: A list of `Atom` objects to apply.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">atoms</span><span class="p">:</span>
-            <span class="n">atoms</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="p">()</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">Atom</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms</span> <span class="k">if</span> <span class="n">atoms</span> <span class="k">else</span> <span class="n">ATOMS</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sieve</span> <span class="o">=</span> <span class="n">sieve</span> <span class="k">if</span> <span class="n">sieve</span> <span class="k">else</span> <span class="n">Sieve</span><span class="p">()</span>
 
 <div class="viewcode-block" id="DataReactor.transform"><a class="viewcode-back" href="../../api/datareactor.reactor.html#datareactor.DataReactor.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span>
