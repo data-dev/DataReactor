@@ -2,9 +2,41 @@ import logging
 import os
 
 import pandas as pd
+
 from metad import MetaData
 
 logger = logging.getLogger(__name__)
+
+
+def _read_csv_dtypes(table_meta):
+    """Get the dtypes specification that needs to be passed to read_csv."""
+    dtypes = dict()
+    for field in table_meta['fields']:
+        if 'data_type' not in field:
+            continue
+        field_type = field['data_type']
+        if field_type == 'categorical':
+            dtypes[field['name']] = str
+        elif field_type == 'id' and field.get('data_subtype', 'integer') == 'string':
+            dtypes[field['name']] = str
+    return dtypes
+
+
+def _parse_dtypes(data, table_meta):
+    """Convert the data columns to the right dtype after loading the CSV."""
+    for field in table_meta['fields']:
+        if 'data_type' not in field:
+            continue
+        field_type = field['data_type']
+        if field_type == 'datetime':
+            datetime_format = field.get('format')
+            data[field['name']] = pd.to_datetime(
+                data[field['name']], format=datetime_format, exact=False)
+        elif field_type == 'numerical' and field.get('data_subtype') == 'integer':
+            data[field['name']] = data[field['name']].dropna().astype(int)
+        elif field_type == 'id' and field.get('data_subtype', 'integer') == 'integer':
+            data[field['name']] = data[field['name']].dropna().astype(int)
+    return data
 
 
 class DerivedColumn():
@@ -52,7 +84,12 @@ class Dataset():
         self.tables = {}
         for table_name in self.metadata.get_table_names():
             path_to_csv = os.path.join(self.path_to_dataset, "%s.csv" % table_name)
-            self.tables[table_name] = pd.read_csv(path_to_csv)
+
+            table_metadata = self.metadata.get_table(table_name)
+            dtypes = _read_csv_dtypes(table_metadata)
+            self.tables[table_name] = pd.read_csv(path_to_csv, dtype=dtypes)
+            _parse_dtypes(self.tables[table_name], table_metadata)
+
             logger.info("Loaded table %s (%s rows, %s cols)" % (
                 table_name,
                 len(self.tables[table_name]),
